@@ -9,9 +9,11 @@
   "keywords": [
     "movies"
   ],
-  "author": "bradoncode",
+  "author": "Andrew Lobban",
   "license": "ISC",
   "devDependencies": {
+    "angular": "^1.5.8",
+    "angular-mocks": "^1.5.8",
     "jasmine-core": "^2.3.4",
     "karma": "^0.13.9",
     "karma-chrome-launcher": "^0.2.0",
