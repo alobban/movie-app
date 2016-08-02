@@ -7,22 +7,24 @@ angular.module('omdb', [])
     var service = {};
     var baseUrl = 'http://www.omdbapi.com/?';
     
-    service.search = function(query) {
+    function httpPromise(url) {
         var deferred = $q.defer();
-        $http.get(baseUrl + 't=' + encodeURIComponent(query))
+        $http.get(url)
             .success(function(data) {
                 deferred.resolve(data);
+            })
+            .error(function() {
+                deferred.reject();
             });
         return deferred.promise;
+    }
+    
+    service.search = function(query) {
+        return httpPromise(baseUrl + 't=' + encodeURIComponent(query));
     };
     
     service.find = function(id) {
-        var deferred = $q.defer();
-        $http.get(baseUrl + 'i=' + id)
-            .success(function(data) {
-                deferred.resolve(data);
-            });
-        return deferred.promise;
+        return httpPromise(baseUrl + 'i=' + id);
     };
     
     return service;
