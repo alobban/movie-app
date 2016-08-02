@@ -90,10 +90,6 @@ describe('MovieCore', function() {
         new PopularMovies(popularMovie).$update();
         new PopularMovies(popularMovie).$remove();
         
-        $httpBackend.flush(1);
-        $httpBackend.flush(1);
-        $httpBackend.flush(1);
-        $httpBackend.flush(1);
-        $httpBackend.flush(1);
+        expect($httpBackend.flush).not.toThrow();
     });
 });
