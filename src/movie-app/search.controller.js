@@ -3,11 +3,11 @@
  */
 
 angular.module('movieApp')
-    .controller('SearchController', function($location) {
-        var vm = this;
-        vm.search = function() {
-            if (vm.query) {
-                $location.path('/results').search('q', vm.query);
+    .controller('SearchController', function($location, $scope) {
+        // var vm = this;
+        $scope.search = function() {
+            if ($scope.query) {
+                $location.path('/results').search('q', $scope.query);
             }
         };
     });
