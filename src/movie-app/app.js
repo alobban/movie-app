@@ -2,7 +2,7 @@
  * Created by vagrant on 8/2/16.
  */
 
-angular.module('movieApp', ['ui.bootstrap', 'ngRoute', 'omdb'])
+angular.module('movieApp', ['ui.bootstrap', 'ngRoute', 'omdb', 'movieCore'])
     .config(function ($routeProvider) {
         $routeProvider
             .when('/results', {
