@@ -19,7 +19,7 @@ describe('omdb service', function () {
     it('returns search movie data', function () {
         // console.log(angular.mock.dump(movieData));
         var response;
-        var expectedUrl = 'http://www.omdbapi.com/?t=star%20wars';
+        var expectedUrl = 'http://www.omdbapi.com/?s=star%20wars';
         
         $httpBackend.when('GET', expectedUrl)
             .respond(200, movieData);

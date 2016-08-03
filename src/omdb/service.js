@@ -20,7 +20,7 @@ angular.module('omdb', [])
     }
     
     service.search = function(query) {
-        return httpPromise(baseUrl + 't=' + encodeURIComponent(query));
+        return httpPromise(baseUrl + 's=' + encodeURIComponent(query));
     };
     
     service.find = function(id) {
