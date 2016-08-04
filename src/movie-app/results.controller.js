@@ -11,5 +11,16 @@ angular.module('movieApp')
             })
             .catch(function() {
                 $scope.errorMessage = 'Something went wrong!';
-            });
+            })
+        ;
+        
+        $scope.expand = function expand(index, id) {
+            omdbApi.find(id)
+                .then(function(data) {
+                    console.log(data);
+                    $scope.results[index].data = data;
+                    $scope.results[index].open = true;
+                })
+            ;
+        }
     });
