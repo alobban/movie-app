@@ -3,14 +3,14 @@
  */
 
 angular.module('movieApp')
-    .controller('ResultsController', function($scope, $location, omdbApi) {
+    .controller('ResultsController', function($scope, $location, omdbApi, $exceptionHandler) {
         var query = $location.search().q;
         omdbApi.search(query)
             .then(function(data) {
                 $scope.results = data.Search;
             })
-            .catch(function() {
-                throw 'Something went wrong!';
+            .catch(function(e) {
+                $exceptionHandler(e);
             })
         ;
         

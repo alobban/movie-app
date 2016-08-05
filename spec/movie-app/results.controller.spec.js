@@ -64,7 +64,7 @@ describe('Results Controller', function() {
     it('sets result status to error', function() {
         spyOn(omdbApi, 'search').and.callFake(function() {
             var deferred = $q.defer();
-            deferred.reject();
+            deferred.reject('Something went wrong!');
             return deferred.promise;
         });
         $location.search('q', 'star wars');
