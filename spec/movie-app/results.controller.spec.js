@@ -68,8 +68,9 @@ describe('Results Controller', function() {
             return deferred.promise;
         });
         $location.search('q', 'star wars');
-        $controller('ResultsController', { $scope: $scope });
-        $rootScope.$apply();
-        expect($scope.errorMessage).toBe('Something went wrong!');
+        expect(function() {
+            $controller('ResultsController', { $scope: $scope });
+            $rootScope.$apply();
+        }).toThrow('Something went wrong!');
     });
 });

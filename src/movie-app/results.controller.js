@@ -10,7 +10,7 @@ angular.module('movieApp')
                 $scope.results = data.Search;
             })
             .catch(function() {
-                $scope.errorMessage = 'Something went wrong!';
+                throw 'Something went wrong!';
             })
         ;
         
