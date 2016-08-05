@@ -32,17 +32,23 @@ describe('Results Controller', function() {
     var $rootScope;
     var $scope;
     var $location;
+    var $exceptionHandler;
     var omdbApi;
     
     beforeEach(module('movieApp'));
     
-    beforeEach(inject(function(_$controller_, _$q_, _$rootScope_, _$location_, _omdbApi_) {
+    beforeEach(module(function($exceptionHandlerProvider) {
+        $exceptionHandlerProvider.mode('log');
+    }));
+    
+    beforeEach(inject(function(_$controller_, _$q_, _$rootScope_, _$exceptionHandler_, _$location_, _omdbApi_) {
         $controller = _$controller_;
         $scope = {};
         $q = _$q_;
         $rootScope = _$rootScope_;
         $location = _$location_;
         omdbApi = _omdbApi_;
+        $exceptionHandler = _$exceptionHandler_;
     }));
     
     it('loads search results', function() {
@@ -67,9 +73,8 @@ describe('Results Controller', function() {
             return deferred.promise;
         });
         $location.search('q', 'star wars');
-        expect(function() {
-            $controller('ResultsController', { $scope: $scope });
-            $rootScope.$apply();
-        }).toThrow('Something went wrong!');
+        $controller('ResultsController', { $scope: $scope });
+        $rootScope.$apply();
+        expect($exceptionHandler.errors).toEqual(['Something went wrong!']);
     });
 });
