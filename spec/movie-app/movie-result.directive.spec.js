@@ -23,7 +23,7 @@ describe('Movie Result Directive', function() {
             '<div class="ng-binding">A young boy from Tatooine sets out on an adventure with an old Jedi named Obi-Wan Kenobi as his mentor to save Princess Leia from the ruthless Darth Vader and Destroy the Death Star built by the Empire which has the power to destroy the entire galaxy.</div>',
             '<p class="ng-binding"><strong>Director:</strong> George Lucas</p>',
             '<p class="ng-binding"><strong>Actors:</strong> Mark Hamill, Harrison Ford, Carrie Fisher, Peter Cushing</p>',
-            '<p class="ng-binding"><strong>Released:</strong> 25 May 1977</p>',
+            '<p class="ng-binding"><strong>Released:</strong> 25 May 1977 (39 years ago)</p>',
             '<p class="ng-binding"><strong>Genre:</strong> Action, Adventure, Fantasy</p>',
         '</div>'
     ].join('');
@@ -44,5 +44,7 @@ describe('Movie Result Directive', function() {
         $rootScope.$digest();
         // console.log(element[0].outerHTML);
         expect(element.html()).toBe(expectedHtml);
+        expect($rootScope.$countChildScopes()).toBe(1);
+        expect($rootScope.$countWatchers()).toBe(10);
     });
 });
