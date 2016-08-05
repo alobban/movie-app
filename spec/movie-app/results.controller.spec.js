@@ -34,7 +34,6 @@ describe('Results Controller', function() {
     var $location;
     var omdbApi;
     
-    beforeEach(module('omdb'));
     beforeEach(module('movieApp'));
     
     beforeEach(inject(function(_$controller_, _$q_, _$rootScope_, _$location_, _omdbApi_) {
