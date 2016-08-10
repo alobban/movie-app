@@ -3,7 +3,13 @@
  */
 
 angular.module('movieApp')
-    .controller('HomeController', function($scope, $interval, $exceptionHandler, omdbApi, PopularMovies) {
+    .controller('HomeController', function($scope, $interval, $exceptionHandler, $log, omdbApi, PopularMovies) {
+        $log.log('standard log');
+        $log.info('info log');
+        $log.error('error log');
+        $log.warn('warn log');
+        $log.debug('some debug information');
+        
         var results = [];
         var idx = 0;
         var findMovie = function(id) {

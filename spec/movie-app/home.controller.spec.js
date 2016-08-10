@@ -26,6 +26,7 @@ describe('Home Controller', function() {
     var omdbApi;
     var PopularMovies;
     var $exceptionHandler;
+    var $log;
     
     beforeEach(module('movieApp'));
 
@@ -52,7 +53,7 @@ describe('Home Controller', function() {
         });
     }));
     
-    beforeEach(inject(function(_$controller_, _$interval_, _$q_, _omdbApi_, _PopularMovies_, _$rootScope_, _$exceptionHandler_) {
+    beforeEach(inject(function(_$controller_, _$interval_, _$q_, _omdbApi_, _PopularMovies_, _$log_, _$rootScope_, _$exceptionHandler_) {
         $scope = {};
         $interval = _$interval_;
         $q = _$q_;
@@ -61,6 +62,7 @@ describe('Home Controller', function() {
         omdbApi = _omdbApi_;
         PopularMovies = _PopularMovies_;
         $exceptionHandler = _$exceptionHandler_;
+        $log = _$log_;
     }));
     
     it('rotates movies every 5 seconds', function() {
@@ -90,6 +92,14 @@ describe('Home Controller', function() {
         // should return to default
         $interval.flush(5000);
         expect($scope.result.Title).toBe(results[0].Title);
+        
+        // $log.assertEmpty();
+        //
+        // expect($log.log.logs[0]).toEqual(['standard log']);
+        // console.log(angular.mock.dump($log.info.logs));
+        // console.log(angular.mock.dump($log.error.logs));
+        // console.log(angular.mock.dump($log.warn.logs));
+        // console.log(angular.mock.dump($log.debug.logs));
     });
     
     it('handles error', function() {
